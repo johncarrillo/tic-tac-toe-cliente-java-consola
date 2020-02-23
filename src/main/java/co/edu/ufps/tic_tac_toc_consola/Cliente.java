@@ -33,14 +33,24 @@ public class Cliente {
             Mensaje de confirmacion
         */
         System.out.println(mensaje);
-        /*
-            Pedira que envie el nombre de usuario
-        */
-        out.writeUTF(sc.nextLine());
-        /*
-            Retornara el puntaje que lleva del usuario con el nombre enviado
-        */
-        System.out.println(in.readUTF());
+        while (true) {
+            /*
+                Pedira que envie el nombre de usuario
+            */
+            out.writeUTF(sc.nextLine());
+            /*
+                Retornara el puntaje que lleva del usuario con el nombre enviado o
+                un false si el usuario ya inicio sesion en otro pc
+            */
+            String puntaje = in.readUTF();
+            if (puntaje.equalsIgnoreCase("false")) {
+                System.out.println("Este usuario ya inicio sesion en otro pc\n"
+                        + "intentelo de nuevo");
+            } else {
+                System.out.println(puntaje);
+                break;
+            }
+        }
         while (true) {
             /*
                 Cuando todo este listo retornara un estado de la partida
